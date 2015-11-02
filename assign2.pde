@@ -13,7 +13,7 @@ boolean upPressed    = false;
 boolean downPressed  = false;
 boolean leftPressed  = false;
 boolean rightPressed = false;
-int PlayerHp = 100;
+int PlayerHp = 20;
 
 //Background 
 float BGX1 = 0;
@@ -193,6 +193,17 @@ void draw()
       //Enemy
       image(enemy,EnemyX,EnemyY);
       EnemyX += EnemySpeed; 
+      
+      if(EnemyX<PlayerX)
+      {
+        if(abs(PlayerY-EnemyY)>150)
+        {
+          if(EnemyY < PlayerY)
+            EnemyY += 5; 
+          else
+            EnemyY -= 5; 
+        }
+      }
       if(EnemyY < PlayerY)
         EnemyY += 1; 
       else
@@ -287,7 +298,7 @@ void draw()
         if(mousePressed)            
         {
           //Reset Player 
-          PlayerHp = 100;
+          PlayerHp = 20;
           PlayerX = width - 50;
           PlayerY = height/2;
           
